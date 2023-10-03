@@ -1,0 +1,36 @@
+# Function to check if a number is prime
+def is_prime(number):
+    if number <= 1:
+        return False  # Numbers less than or equal to 1 are not prime
+    elif number == 2:
+        return True   # 2 is a prime number
+    elif number % 2 == 0:
+        return False  # Even numbers greater than 2 are not prime
+
+    # Check for divisors starting from 3 up to the square root of the number
+    for i in range(3, int(number**0.5) + 1, 2):
+        if number % i == 0:
+            return False  # Number is divisible by i, not prime
+
+    return True  # If no divisors are found, the number is prime
+
+# Get the number from the user
+try:
+    user_number = int(input("Enter a positive integer: "))
+    
+    # Check if the number is prime
+    if is_prime(user_number):
+        print(f"{user_number} is a prime number.")
+    else:
+        print(f"{user_number} is not a prime number.")
+except ValueError:
+    print("Error: Invalid input. Please enter a valid positive integer.")
+
+
+
+Enter a positive integer: 2
+2 is a prime number.
+Enter a positive integer: 0
+0 is not a prime number.
+Enter a positive integer: 9
+9 is not a prime number.
